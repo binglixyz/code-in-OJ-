@@ -2,7 +2,6 @@
 #include<vector>
 #include<iterator>
 #include<algorithm>
-using namespace std;
 /*
 最精彩的一步就是对两个有序数组搜索逆序对时，左小右大，
 取出右边最小元素，搜索其在左数组中的位置，
@@ -16,10 +15,10 @@ public:
 		if (size <= 1) {
 			return 0;
 		}
-		long long result = mergeSort(data.begin(), data.end());
-		return result % 1000000007;
+		int result = mergeSort(data.begin(), data.end());
+		return result;
 	}
-	long long mergeSort(vector<int>::iterator startIter, vector<int>::iterator endIter) {
+	int mergeSort(vector<int>::iterator startIter, vector<int>::iterator endIter) {
 		long long size = endIter - startIter;
 		if (startIter + 1 == endIter) {
 			return 0;
@@ -43,6 +42,6 @@ public:
 		}
 		vector<int> mirrorVector(startIter, endIter);
 		merge(mirrorVector.begin(), mirrorVector.begin()+size/2, mirrorVector.begin() + size / 2,mirrorVector.end(), startIter);
-		return numPairs;
+		return numPairs % 1000000007;
 	}
 };
